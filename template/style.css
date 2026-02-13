@@ -1,0 +1,102 @@
+/* font: import ================================================ */
+@font-face {
+  font-family: 'variableFont';
+  src: url('./font/RobotoFlex.ttf') format('truetype');
+}
+
+
+/* Layout ================================================ */
+html,body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  transition: background-color 1s ease-in-out;
+  background-color: #ff0000;
+  /* background-image: url('./img/tiri_oracle1.jpg'); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+/* =========================================================== */
+/* Teachable Machine: Webcam Container */
+/* =========================================================== */
+#webcam-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 500px; /* ✅ #Webcam Width */ 
+  height: 500px; /* ✅ #Webcam Height */ 
+  -webkit-transform: translate(-50%, -50%) scale(1, 1);
+  -moz-transform: translate(-50%, -50%) scale(1, 1);
+  -ms-transform: translate(-50%, -50%) scale(1, 1);
+  -o-transform: translate(-50%, -50%) scale(1, 1);
+  transform: translate(-50%, -50%) scale(1, 1);
+  place-items: center;
+  z-index: -1;
+}
+
+canvas {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* border-radius: 10px; */
+} 
+
+
+/* text ================================================ */
+#mainText1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  font-family: 'variableFont';
+  font-size: 200px;
+  color: black;
+  text-align: left;
+  letter-spacing: 0;
+  line-height: 200px;
+  text-wrap: nowrap;
+  
+	transition: font-size 1s ease-in-out, font-variation-settings 1s ease-in-out;
+}
+
+#mainText2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  font-family: 'variableFont';
+  font-size: 200px;
+  color: black;
+  text-align: left;
+  letter-spacing: 0;
+  line-height: 200px;
+  text-wrap: nowrap;
+  
+	transition: font-size 1s ease-in-out, font-variation-settings 1s ease-in-out;
+}
+
+.variable1 {
+  font-variation-settings: "opsz" 144, "wght" 1000, "GRAD" 150, "wdth" 151, "slnt" 0, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
+  color: red;
+}
+
+.variable2 {
+  font-variation-settings: "opsz" 8, "wght" 100, "GRAD" -200, "wdth" 151, "slnt" -10, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
+  color: blue;
+}
+
+/* Image ================================================ */
