@@ -13,6 +13,8 @@
    let hasOpenedWindow = false;
    // ⁉️ Tracks if index 3 has been triggered
    let hasTriggeredIndex3 = false;
+   // 🆕 Tracks if a screenshot has been taken
+   let screenshotTaken = false;
    // 🆕 Tracks if headings should be shown (triggered by maxIndex === 1)
    let canShowHeadings = false;
    // ⁉️ Probability threshold (80%) for triggering an action
@@ -96,11 +98,37 @@
            weight = minWeight + progress * (maxWeight - minWeight);
            heading3.style.fontVariationSettings = `"wght" ${weight}`;
        }
-   }
+  }
 
-   // Run on load and resize
+  function updateWebcamPosition() {
+    const webcamContainer = document.getElementById("webcam-container");
+    if (!webcamContainer) return;
+
+    const minWidth = 400; // min screen width
+    const maxWidth = window.screen.width;
+    const currentWidth = window.innerWidth;
+
+    // Clamp width to range
+    const clampedWidth = Math.max(minWidth, Math.min(currentWidth, maxWidth));
+
+    // Calculate progress (0 to 1)
+    const progress = (clampedWidth - minWidth) / (maxWidth - minWidth);
+
+    // Map progress to top and left
+    // Top from 50% to 30%
+    const top = 50 - progress * 20; // 50 -> 30
+    // Left from 50% to 80%
+    const left = 50 + progress * 30; // 50 -> 80
+
+    webcamContainer.style.top = `${top}%`;
+    webcamContainer.style.left = `${left}%`;
+  }
+
+  // Run on load and resize
    window.addEventListener("resize", updateHeadings);
    window.addEventListener("load", updateHeadings);
+  window.addEventListener("resize", updateWebcamPosition);
+  window.addEventListener("load", updateWebcamPosition);
 
 
    async function init() {
@@ -188,10 +216,11 @@
       if (maxIndex === 0) {
         document.querySelector("#mainText1").style.opacity = "0";
         document.querySelector("#mainText2").style.opacity = "0";
-        document.body.style.backgroundColor = "#00ff00";
+
         canShowHeadings = false; // Disable headings
       } 
       else if (maxIndex === 1) {
+        document.body.className = "variable4";
         document.querySelector("#mainText1").style.opacity = "0";
         document.querySelector("#mainText2").style.opacity = "0";
         document.querySelector("#mainText1").className = "variable2";
@@ -200,26 +229,48 @@
         canShowHeadings = true; // Enable headings
       } 
       else if (maxIndex === 2) {
+        
         document.querySelector("#mainText1").style.opacity = "1";
         document.querySelector("#mainText2").style.opacity = "1";
         document.querySelector("#mainText1").className = "variable1";
         document.querySelector("#mainText2").className = "variable1";
         document.querySelector("#mainText2").textContent = "Welcome";  
-        document.body.style.backgroundColor = "#0800ff";
         canShowHeadings = false; // Disable headings
       } 
       else if (maxIndex === 3) {
+        document.body.className = "variable3";
         document.querySelector("#mainText1").style.opacity = "1";
         document.querySelector("#mainText2").style.opacity = "1";
-        document.querySelector("#mainText1").className = "variable2";
-        document.querySelector("#mainText2").className = "variable2";
         document.querySelector("#mainText1").textContent = "Tiri Kananuruk is a Thai performance artist and educator based in New York.";
         document.querySelector("#mainText2").textContent = "Performance Artist / Creative Coder / Educator ";  
+        
         canShowHeadings = false; // Disable headings
       } 
 
       // Trigger updateHeadings to apply changes immediately
       updateHeadings();
+
+      // Screenshot logic
+      // We check prediction[3] directly for the screenshot trigger
+      if (maxIndex === 3 && prediction[3].probability > 0.95 && !screenshotTaken) {
+          screenshotTaken = true; // Set flag to prevent re-triggering
+          console.log("Attempting to take screenshot..."); // Added for debugging
+
+          html2canvas(document.body, { useCORS: true }).then(canvas => {
+              console.log("html2canvas successful"); // Added for debugging
+              const image = canvas.toDataURL("image/png");
+              const link = document.createElement('a');
+              link.href = image;
+              link.download = 'webpage-screenshot.png';
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+
+              console.log("Webpage screenshot taken!");
+          }).catch(err => {
+              console.error("html2canvas failed:", err); // Added for debugging
+          });
+      }
       // =================================================
       // ✔️ Display prediction results on the screen
       // =================================================

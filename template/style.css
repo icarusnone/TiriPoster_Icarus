@@ -34,8 +34,8 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 500px; /* ✅ #Webcam Width */ 
-  height: 500px; /* ✅ #Webcam Height */ 
+  width: 300px; /* ✅ #Webcam Width */ 
+  height: 300px; /* ✅ #Webcam Height */ 
   -webkit-transform: translate(-50%, -50%) scale(1, 1);
   -moz-transform: translate(-50%, -50%) scale(1, 1);
   -ms-transform: translate(-50%, -50%) scale(1, 1);
@@ -98,5 +98,6 @@ canvas {
   font-variation-settings: "opsz" 8, "wght" 100, "GRAD" -200, "wdth" 151, "slnt" -10, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
   color: blue;
 }
+
 
 /* Image ================================================ */

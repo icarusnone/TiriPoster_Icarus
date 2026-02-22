@@ -1,7 +1,7 @@
 /* font: import ================================================ */
 @font-face {
   font-family: 'variableFont';
-  src: url('./font/RobotoFlex.ttf') format('truetype');
+  src: url('./font/SpaceGrotesk-VariableFont_wght.ttf') format('truetype');
 }
 
 
@@ -19,7 +19,7 @@ body {
   justify-content: center;
   align-items: center; */
   transition: background-color 1s ease-in-out;
-  background-color: #2bfa32;
+  background-color: #2846fe;
   /* background-image: url('./img/tiri_oracle1.jpg'); */
   background-repeat: no-repeat;
   background-position: center;
@@ -32,15 +32,15 @@ body {
 /* =========================================================== */
 #webcam-container {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 500px; /* ✅ #Webcam Width */ 
-  height: 500px; /* ✅ #Webcam Height */ 
+  top: 20%;
+  left: 80%;
+  width: 200px; /* ✅ #Webcam Width */ 
+  height: 200px; /* ✅ #Webcam Height */ 
   -webkit-transform: translate(-50%, -50%) scale(1, 1);
   -moz-transform: translate(-50%, -50%) scale(1, 1);
   -ms-transform: translate(-50%, -50%) scale(1, 1);
   -o-transform: translate(-50%, -50%) scale(1, 1);
-  transform: translate(-50%, -50%) scale(1, 1);
+  transform: translate(-50%, -50%) scale(1, 1); 
   place-items: center;
   z-index: -1;
 }
@@ -65,10 +65,10 @@ canvas {
 
   font-family: 'variableFont';
   font-size: 100px;
-  color: black;
+  color: #2846fe;
   text-align: left;
   letter-spacing: 0;
-  line-height: 100px;
+  line-height: 90px;
   text-wrap: wrap;
   
 	transition: font-size 1s ease-in-out, font-variation-settings 1s ease-in-out;
@@ -82,10 +82,10 @@ canvas {
 
   font-family: 'variableFont';
   font-size: 100px;
-  color: black;
+  color: #2846fe;
   text-align: left;
   letter-spacing: 0;
-  line-height: 100px;
+  line-height: 90px;
   text-wrap: wrap;
   
 	transition: font-size 1s ease-in-out, font-variation-settings 1s ease-in-out;
@@ -100,6 +100,13 @@ canvas {
   font-variation-settings: "opsz" 8, "wght" 100, "GRAD" -200, "wdth" 151, "slnt" -10, "XOPQ" 96, "YOPQ" 79, "XTRA" 468, "YTUC" 712, "YTLC" 514, "YTAS" 750, "YTDE" -203, "YTFI" 738;
   color: blue;
 }
+.variable3 {
+  background-image: url("./img/face_2.png");
+}
+.variable4 {
+  background-image: url("./img/face_1.png");
+}
+
 
 /* Image ================================================ */
 
@@ -113,7 +120,7 @@ canvas {
   
   font-family: 'variableFont';
   font-size: 50px;
-  color: black;
+  color: #2846fe;
   text-align: center;
   text-wrap: wrap;
   
